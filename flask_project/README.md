@@ -17,10 +17,14 @@ Eu criei uma aplicação que cria, edita e deleta uma lista de tarefas pelo mini
 
 2. Executar os seguintes comando no terminal:
 
-"python3"               # Para entrar no Terminal Integrado do Python
-'''python
+```bash
+python3
+```
+
+```python
 from app import db    # Importar instancia do Banco de Dados
+
 db.create_all()       # Para criar a tabela dentro do Banco de Dados
-'''
+```
 
 3. Agora basta executar o arquivo "run.py" e abrir no navegador a seguinte URL: "localhost:5000"
