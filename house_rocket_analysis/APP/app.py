@@ -9,13 +9,12 @@ import sys
 
 
 #! Add folder "src" as a package path
-project_path = "Put here the path to the project's root folder, the folder 'house_rocket_analysis'"
-sys.path.append(f'{project_path}/house_rocket_analysis/src/')
+project_path = "Put/here/the/path/to/the/project's/root/folder/house_rocket_analysis"
+sys.path.append(f'{project_path}/src/')
 import visualization.maps as maps
 
 #! App configuration
 st.set_page_config(layout='wide')
-
 
 @st.cache(allow_output_mutation=True)
 def load_data(path):
@@ -24,6 +23,7 @@ def load_data(path):
     return data
 
 
+# Pages definition
 def sidebar():
     st.sidebar.title('Select Page')
     page_select = st.sidebar.selectbox( label='', options=['Final Reports', 'Maps'])
@@ -48,6 +48,7 @@ def page_final_reports(renamed_houses, recommended_houses):
     st.markdown('* Houses rated 8 or higher in the "Grid" (Quality of the building mateirais of the house) attribute have the best average price per rank and number of homes.')
     st.markdown('* The average price of renovated homes is 22% higher than unrenovated homes.')
     st.markdown('* The biggest correlation with Price and what can be added in a makeover is the bathroom and the amount of square feet of the house.')
+    st.markdown('* The best season for re-selling homes is Spring.')
 
     st.header(
         """After these analyses, the recommended houses for House Rocket to buy follow the conditions:

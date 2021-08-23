@@ -31,7 +31,7 @@ In addition, I created and answered 3 hypotheses, in addition to creating a Web 
 1. Edit the following snippet of the "app.py" file inside the APP folder. Inside it put the path to the project's root folder.
 
 ```python
-project_path = "Put here the path to the project's root folder, the folder 'house_rocket_analysis'"
+project_path = "Put/here/the/path/to/the/project's/root/folder/house_rocket_analysis"
 ```
 
 2. From the command line, run the following command:

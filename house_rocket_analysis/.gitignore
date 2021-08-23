@@ -1,6 +1,3 @@
-# Python venv environment
-env
-
 # VSCode settings
 .vscode
 
@@ -12,8 +9,3 @@ __pycache__
 
 # Package instalation
 .mypy_cache
-
-# Test
-test.py
-
-note.ipynb
