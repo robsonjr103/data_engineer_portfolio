@@ -9,13 +9,9 @@ import streamlit as st
 import sys
 
 
-
-#! Import my various environment with the path to this project
-stn = Sultan()
-project_path = stn.sudo('echo $HOUSE_ROCKET_ENVIROMENT').run()
-
 #! Add folder "src" as a package path
-sys.path.append(f'{project_path}/src/')
+project_path = "Put here the path to the project's root folder, the folder 'house_rocket_analysis'"
+sys.path.append(f'{project_path}/house_rocket_analysis/src/')
 import visualization.maps as maps
 
 #! App configuration
