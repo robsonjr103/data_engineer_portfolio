@@ -65,7 +65,6 @@ x-airflow-common:
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - ./project:/opt/airflow/project
-    - ./requirements.txt:/opt/airflow/requirements.txt
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
   depends_on:
     redis:
@@ -76,6 +75,8 @@ x-airflow-common:
 services:
   postgres:
     image: postgres:13
+    ports:
+      - 5434:5432
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
