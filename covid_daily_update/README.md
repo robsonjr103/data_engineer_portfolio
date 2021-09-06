@@ -41,7 +41,7 @@ In addition, within the "dag.py" file there is an Airflow DAG that adds daily Co
 - The container will run in background mode, Airflow services on port 8080, and Postgres on port 5434.
 - Wait a minute for the services to start completely, and then execute the other commands.
     ```sh
-    docker-compose up -d
+    sudo docker-compose up -d
     ```
 ---
 3. Inside the "covid_daily_update" folder run the file "run.sh":
@@ -66,23 +66,23 @@ In addition, within the "dag.py" file there is an Airflow DAG that adds daily Co
 
 #### Show the active containers.
 ```sh
-docker ps
+sudo docker ps
 ```
 
 ---
 #### Stop the containers (Run in "covid_daily_update" folder).
 ```sh
-docker-compose down
+sudo docker-compose down
 ``` 
 ---
 #### Run a command inside the container.
 ```sh
-docker exec covid_daily_update_airflow-webserver_1 <command>
+sudo docker exec covid_daily_update_airflow-webserver_1 <command>
 ```
 
 ---
 #### Show logs from a container
 ```sh
-docker logs <container name>
+sudo docker logs <container name>
 ```
 ---
