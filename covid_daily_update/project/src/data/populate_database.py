@@ -4,7 +4,7 @@
 # The "add_data_in_brazil_covid_table" function adds data to the "covid_brazil" table. It makes API requests
 # with Covid data in Brazil for each day until the yesterday's date and adds them to the table.
 
-def add_data_in_covid_states_table(path):
+def add_data_in_covid_states_table(cursor):
     """
     Summary: It populaes the "covid_states" table with daily Covid data from each Brazilian state.
 
@@ -13,18 +13,13 @@ def add_data_in_covid_states_table(path):
     * Third creates a loop that makes a request in the API for each date in the date list and adds the data returned from JSON response to the "covid_states" table of the data collection.
 
     Args:
-      : path: Path to the "database.db" file.
+      : cursor (sqlite3 cursor): Cursor of the connection with the database
     """
 
     import requests
     import sqlite3
     import pandas as pd
     from datetime import datetime, timedelta
-
-    #! Database connection
-    # Creates a connection to the database
-    conection = sqlite3.connect(path)
-    cursor = conection.cursor()  # Creates a cursor to the connection
 
     #! Define API URL and parameters
     API_URL = "http://covid-api.com/api/reports"  # Base Api Url
@@ -64,13 +59,10 @@ def add_data_in_covid_states_table(path):
             cursor.execute(
                 f"INSERT INTO covid_states VALUES ('{state}', '{date}', {confirmated}, {confirmated_difference}, {deaths}, {deaths_difference}, '{last_update}')")
 
-    conection.commit()  # Commit alterations in Database
-    conection.close()  # Close connection with Database
-
     return None
 
 
-def add_data_in_brazil_covid_table(path):
+def add_data_in_brazil_covid_table(cursor):
     """
     Summary: It populaes the "covid_brazil" table with daily Covid data from Brazil
 
@@ -79,18 +71,13 @@ def add_data_in_brazil_covid_table(path):
     * Third creates a loop that makes a request in the API for each date in the date list and adds the data returned to the "covid_brazil" table of the data collection.
 
     Args:
-      : path: Path to the "database.db" file.
+      : cursor (sqlite3 cursor): Cursor of the connection with the database
     """
 
     import requests
     import sqlite3
     import pandas as pd
     from datetime import datetime, timedelta
-
-    #! Database connection
-    # Creates a connection to the database
-    conection = sqlite3.connect(path)
-    cursor = conection.cursor()  # Creates a cursor to the connection
 
     #! Define API URL and parameters
     API_URL = "http://covid-api.com/api/reports/total"  # Base Api Url
@@ -125,8 +112,5 @@ def add_data_in_brazil_covid_table(path):
         #! Add the Covid data of the date
         cursor.execute(
             f"INSERT INTO covid_brazil VALUES ('{date}', {confirmated}, {confirmated_difference}, {deaths}, {deaths_difference}, '{last_update}')")
-
-    conection.commit()  # Commit alterations in Database
-    conection.close()  # Close connection with Database
 
     return None

@@ -4,7 +4,7 @@
 # The "update_data_covid_brazil" function adds data of the yesterday's date to the "covid_states" table. It makes a API request
 # with Covid data from Brazil
 
-def update_data_covid_states(path):
+def update_data_covid_states(cursor):
     """
     Summary: Adds in the table "covid_states" daily data of Covid to home Brazilian state.
 
@@ -13,17 +13,12 @@ def update_data_covid_states(path):
     * Third creates a loop that adds the data returned from JSON response to the "covid_states" table of the data collection.
 
     Args:
-      : path: Path to the "database.db" file.
+      : cursor (sqlite3 cursor): Cursor of the connection with the database
     """
 
     import requests
     import sqlite3
     from datetime import datetime, timedelta
-
-    #! Database connection
-    # Creates a connection to the database
-    conection = sqlite3.connect(path)
-    cursor = conection.cursor()  # Creates a cursor to the connection
 
     #! Define API URL and parameters and make the request
     # Base Api Url
@@ -51,13 +46,10 @@ def update_data_covid_states(path):
         cursor.execute(
             f"INSERT INTO covid_states VALUES ('{state}', '{date}', {confirmated}, {confirmated_difference}, {deaths}, {deaths_difference}, '{last_update}')")
 
-    conection.commit()  # Commit alterations in Database
-    conection.close()  # Close connection with Database
-
     return None
 
 
-def update_data_covid_brazil(path):
+def update_data_covid_brazil(cursor):
     """
     Summary: It populaes the "covid_brazil" table with daily Covid data from Brazil
 
@@ -66,17 +58,12 @@ def update_data_covid_brazil(path):
     * Adds the data returned from the JSON response to the "covid_brazil" table of the data collection.
 
     Args:
-      : path: Path to the "database.db" file.
+      : cursor (sqlite3 cursor): Cursor of the connection with the database
     """
 
     import requests
     import sqlite3
     from datetime import datetime, timedelta
-
-    #! Database connection
-    # Creates a connection to the database
-    conection = sqlite3.connect(path)
-    cursor = conection.cursor()  # Creates a cursor to the connection
 
     #! Define API URL and parameters and make the request
     API_URL = "http://covid-api.com/api/reports/total"
@@ -99,8 +86,5 @@ def update_data_covid_brazil(path):
     #! Add the Covid data of the date
     cursor.execute(
         f"INSERT INTO covid_brazil VALUES ('{date}', {confirmated}, {confirmated_difference}, {deaths}, {deaths_difference}, '{last_update}')")
-
-    conection.commit()  # Commit alterations in Database
-    conection.close()  # Close connection with Database
 
     return None

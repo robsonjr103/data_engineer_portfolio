@@ -1,19 +1,15 @@
 # The "create_database_and_tables" function creates the database and its two tables if they do not exist.
 
 
-def create_database_and_tables(path):
+def create_database_and_tables(cursor):
     """
     Summary: Creates a database and the "covid_states" and "covid_brazil" of them do not exist.
 
     Args:
-      : path: Path to the "database.db" file.
+      : cursor (sqlite3 cursor): Cursor of the connection with the database
     """
 
     import sqlite3
-
-    #! Connects to the "database.db database if it exists, otherwise creates it.
-    conection = sqlite3.connect(path)
-    cursor = conection.cursor()
 
     #! Creates the "covid_states" and "covid_brazil" tables if they do not exist.
     cursor.execute("""CREATE TABLE IF NOT EXISTS covid_states (
@@ -33,8 +29,5 @@ def create_database_and_tables(path):
                             deaths_difference INTEGER,
                             last_update TIMESTAMP)
         """)
-
-    conection.commit()  # Commit alterations in Database
-    conection.close()  # Close connection with Database
 
     return None
