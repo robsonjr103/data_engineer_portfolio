@@ -78,6 +78,7 @@ pickleshare==0.7.5
 prison==0.2.1
 prompt-toolkit==3.0.20
 psutil==5.8.0
+psycopg2-binary==2.9.1
 ptyprocess==0.7.0
 pycodestyle==2.7.0
 pycparser==2.20

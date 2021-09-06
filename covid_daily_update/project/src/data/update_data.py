@@ -13,7 +13,7 @@ def update_data_covid_states(path):
     * Third creates a loop that adds the data returned from JSON response to the "covid_states" table of the data collection.
 
     Args:
-      path: Path to the "project" directory.
+      : path: Path to the "database.db" file.
     """
 
     import requests
@@ -22,7 +22,7 @@ def update_data_covid_states(path):
 
     #! Database connection
     # Creates a connection to the database
-    conection = sqlite3.connect(f"{path}/data/database/database.db")
+    conection = sqlite3.connect(path)
     cursor = conection.cursor()  # Creates a cursor to the connection
 
     #! Define API URL and parameters and make the request
@@ -66,7 +66,7 @@ def update_data_covid_brazil(path):
     * Adds the data returned from the JSON response to the "covid_brazil" table of the data collection.
 
     Args:
-      : path (str): Path to the "project" directory.
+      : path: Path to the "database.db" file.
     """
 
     import requests
@@ -75,7 +75,7 @@ def update_data_covid_brazil(path):
 
     #! Database connection
     # Creates a connection to the database
-    conection = sqlite3.connect(f"{path}/data/database/database.db")
+    conection = sqlite3.connect(path)
     cursor = conection.cursor()  # Creates a cursor to the connection
 
     #! Define API URL and parameters and make the request
