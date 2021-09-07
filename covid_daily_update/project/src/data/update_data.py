@@ -8,16 +8,14 @@ def update_data_covid_states(cursor):
     """
     Summary: Adds in the table "covid_states" daily data of Covid to home Brazilian state.
 
-    * It first connects to the database and creates a cursor to change it.
-    * Second sets the API base URL and make a request
+    * Ir first sets the API base URL and make a request
     * Third creates a loop that adds the data returned from JSON response to the "covid_states" table of the data collection.
 
     Args:
-      : cursor (sqlite3 cursor): Cursor of the connection with the database
+      : cursor (Database cursor): Cursor of the connection with the database
     """
 
     import requests
-    import sqlite3
     from datetime import datetime, timedelta
 
     #! Define API URL and parameters and make the request
@@ -53,16 +51,14 @@ def update_data_covid_brazil(cursor):
     """
     Summary: It populaes the "covid_brazil" table with daily Covid data from Brazil
 
-    * It first connects to the database and creates a cursor to change it.
-    * Second sets the API base URL and make a request
+    * It first sets the API base URL and make a request
     * Adds the data returned from the JSON response to the "covid_brazil" table of the data collection.
 
     Args:
-      : cursor (sqlite3 cursor): Cursor of the connection with the database
+      : cursor (Database cursor): Cursor of the connection with the database
     """
 
     import requests
-    import sqlite3
     from datetime import datetime, timedelta
 
     #! Define API URL and parameters and make the request

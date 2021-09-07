@@ -1,5 +1,5 @@
 import sys
-import sqlite3
+import psycopg2
 from datetime import datetime
 from airflow.operators.python import PythonOperator
 from airflow import DAG
@@ -7,20 +7,26 @@ from airflow import DAG
 # Add src to library path
 sys.path.append("/opt/airflow/project/src")
 from data.update_data import update_data_covid_brazil, update_data_covid_states
-from data.create_database import create_database_and_tables
+from data.create_tables import create_tables
 
 
-# Path to the database file
-PATH = "/opt/airflow/project/data/database/database.db"
+#! Database connection parameters
+_DB_NAME = "Covid_Daily_Update" # Database Name
+_DB_USER = "airflow" # User name
+_DB_PASS = "airflow" # User password
+DB_HOST = "localhost" # Host of database
+PORT = "5434" # Port
 
 # Create connection and cursor with the database
-connection = sqlite3.connect(PATH)
+connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=DB_HOST, port=PORT)
 cursor = connection.cursor()
 
 
-# Function that commit changes and close connection
+
+#! Function that commit changes and close connection
 def commit_and_close_connection(connection, cursor):
-    connection.commit()  # Commit changes
+    connection.commit() # Commit changes
+    cursor.close() # Close Cursor
     connection.close()  # Close connection
     
     return None 
@@ -32,10 +38,10 @@ with DAG(dag_id="daily_update_covid_tables",
          catchup=False
          ) as dag:
 
-    # Task that performs the function that creates the database and its tables if they do not exist
-    create_database = PythonOperator(
-        task_id="create_database",
-        python_callable=create_database_and_tables,
+    # Task that performs the function that creates tables if they do not exist
+    create_tables = PythonOperator(
+        task_id="create_tables",
+        python_callable=create_tables,
         op_kwargs={'cursor': cursor}
     )
 
@@ -53,6 +59,7 @@ with DAG(dag_id="daily_update_covid_tables",
         op_kwargs={'cursor': cursor}
     )
     
+    # Task that commit changes and close cursor and connection with the Database
     commit_and_close_connection = PythonOperator(
     	task_id="commit_and_close_connection",
     	python_callable=commit_and_close_connection,
@@ -60,4 +67,4 @@ with DAG(dag_id="daily_update_covid_tables",
     )
 
     # Organizes the dependency
-    create_database >> [update_states_table, update_brazil_table] >> commit_and_close_connection
+    create_tables >> [update_states_table, update_brazil_table] >> commit_and_close_connection

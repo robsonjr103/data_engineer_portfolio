@@ -8,16 +8,15 @@ def add_data_in_covid_states_table(cursor):
     """
     Summary: It populaes the "covid_states" table with daily Covid data from each Brazilian state.
 
-    * It first connects to the database and creates a cursor to change it.
-    * Second sets the API base URL and creates a list of dates, starting from the date "2020-05-20" to the yesterday's date.
+    * It first sets the API base URL and creates a list of dates, starting from the date "2020-05-20" to the yesterday's date.
     * Third creates a loop that makes a request in the API for each date in the date list and adds the data returned from JSON response to the "covid_states" table of the data collection.
 
     Args:
-      : cursor (sqlite3 cursor): Cursor of the connection with the database
+      : cursor (DataBase cursor): Cursor of the connection with the database
     """
 
+    import os
     import requests
-    import sqlite3
     import pandas as pd
     from datetime import datetime, timedelta
 
@@ -38,7 +37,7 @@ def add_data_in_covid_states_table(cursor):
         date = str(d)[:10]
 
         # Shows which date the loop is adding data
-        print(f"Adding data from date {date}")
+        os.system(f'echo "Adding data from date {date} to covid_states table"')
 
         query = {"date": date, "q": "Brazil",
                  "region_name": "Brazil", "iso": "BRA"}
@@ -59,6 +58,8 @@ def add_data_in_covid_states_table(cursor):
             cursor.execute(
                 f"INSERT INTO covid_states VALUES ('{state}', '{date}', {confirmated}, {confirmated_difference}, {deaths}, {deaths_difference}, '{last_update}')")
 
+    os.system(f'echo -e "\nSucefully add data in covid_states table\n"')
+    
     return None
 
 
@@ -66,16 +67,15 @@ def add_data_in_brazil_covid_table(cursor):
     """
     Summary: It populaes the "covid_brazil" table with daily Covid data from Brazil
 
-    * It first connects to the database and creates a cursor to change it.
-    * Second sets the API base URL and creates a list of dates, starting from the date "2020-05-20" to the yesterday's date.
+    * It first sets the API base URL and creates a list of dates, starting from the date "2020-05-20" to the yesterday's date.
     * Third creates a loop that makes a request in the API for each date in the date list and adds the data returned to the "covid_brazil" table of the data collection.
 
     Args:
-      : cursor (sqlite3 cursor): Cursor of the connection with the database
+      : cursor (DataBase cursor): Cursor of the connection with the database
     """
 
+    import os
     import requests
-    import sqlite3
     import pandas as pd
     from datetime import datetime, timedelta
 
@@ -94,7 +94,7 @@ def add_data_in_brazil_covid_table(cursor):
         date = str(d)[:10]
 
         # Shows which date the loop is adding data
-        print(f"Adding data from date {date}")
+        os.system(f'echo "Adding data from date {date} to covid_brazil table"')
 
         query = {"date": date, "q": "Brazil",
                  "region_name": "Brazil", "iso": "BRA"}
@@ -112,5 +112,8 @@ def add_data_in_brazil_covid_table(cursor):
         #! Add the Covid data of the date
         cursor.execute(
             f"INSERT INTO covid_brazil VALUES ('{date}', {confirmated}, {confirmated_difference}, {deaths}, {deaths_difference}, '{last_update}')")
-
+    
+    os.system(f'echo "Data entered in the covid_brazil successfully entered."')
+    
     return None
+    

@@ -39,26 +39,36 @@ In addition, within the "dag.py" file there is an Airflow DAG that adds daily Co
 ---
 2. Run the following command in "covid_daily_update" folder:
 - The container will run in background mode, Airflow services on port 8080, and Postgres on port 5434.
-- Wait a minute for the services to start completely, and then execute the other commands.
+
     ```sh
     sudo docker-compose up -d
     ```
+- Wait a minute for the services to start completely, and then execute the other commands.
+
 ---
 3. Inside the "covid_daily_update" folder run the file "run.sh":
     ###### WARNING: Run this file only once, even if you stop the container some time.
 - It update the "pip", installs the libraries within the file "requiriments.txt".
-- Runs the "run.py" file, which creates the Database and its tables if they do not exist. Then it adds within covid's daily database from the first time it became available until the date before the Script was run.
 - Finally unpause the "daily_update_covid_tables" DAG.
 
     ```sh
     bash run.sh
     ```
 ---
-4. Now the data will be inserted into the Database tables and Airflow will run in the background, so daily at 13:01 data from the previous day will be added.
+4. Run the command:
+    
+- Runs the script that creates the database and its tables, if they do not stretch and populate then with daily data
+
+    ```sh
+    sudo docker exec covid_daily_update_airflow-webserver_1 python3 /opt/airflow/project/run.py
+    ```
+
+---
+5. Now the data will be inserted into the Database tables and Airflow will run in the background, so daily at 13:01 data from the previous day will be added.
 - If you prefer, go to the following link "localhost:8080" to access the Airflow UI, the user and password are both "airflow".
 
 ---
-5. The database is in the "/opt/airflow/project/data/database/database.db" path.
+6. The database is in the "/opt/airflow/project/data/database/database.db" path.
 - You can use some framework that can connect to the Database file to explore it or anything you want.
 ---
 
