@@ -11,7 +11,7 @@
 ---
 ### Atualização diária de dados do Covid no Brazil e nos seus estados (covid_daily_update):
 
-> Dentro dessa aplicação, há um contêiner com serviços do Airflow, Postgres e Redis, também há um script que cria um Banco de dados e duas tabelas se não existirem, a tabela "covid_brazil" contém dados gerais e diários do Covid no Brazil, e a tabela "covid_states" contém dados diários do Covid nos estados brasileiros. Além há um script que faz várias requisições em uma API para adicionar dados diários dentro das tabelas desde a primeira vez que se tornaram disponíveis até a data anterior a execução do script. Por fim há uma DAG que diariamente adiciona dados diariamente do Covid dentro das tabelas todo dia as 13h01.
+> Essa aplicação roda dentro de um container com os serviços do Airflow, Redis e Postgres. Por meio do Script "run.py", duas tabelas dentro de um Banco de dados do gerenciado pelo Postgres, uma tabela contém dados diários e gerais do Covid-19 no Brasil, a outra tabela contém dados diários de cada estado brasileiro, por fim o script faz multiplas requisições na API [covid-api](http://covid-api.com/api/) para que todos os dados diários disponíveis para cada tabela sejam inseridos dentro das mesmas. Além disso há a DAG do Airflow chamada "daily_update_covid_tables" que insere diariamente as UTC 13h01 dados de dia anterior para cada tabela de forma automatica.
 
 ---
 ### Projeto Flask (flask_project):
