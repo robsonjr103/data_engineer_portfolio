@@ -6655,3 +6655,129 @@ could not connect to server: Cannot assign requested address
 	TCP/IP connections on port 5434?
 [2021-09-07 15:10:06,554] {processor.py:625} WARNING - No viable dags retrieved from /opt/airflow/dags/dag.py
 [2021-09-07 15:10:06,569] {processor.py:170} INFO - Processing /opt/airflow/dags/dag.py took 0.021 seconds
+[2021-09-07 15:58:59,561] {processor.py:162} INFO - Started process (PID=23) to work on /opt/airflow/dags/dag.py
+[2021-09-07 15:58:59,561] {processor.py:613} INFO - Processing file /opt/airflow/dags/dag.py for tasks to queue
+[2021-09-07 15:58:59,561] {logging_mixin.py:109} INFO - [2021-09-07 15:58:59,561] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dag.py
+[2021-09-07 15:58:59,568] {logging_mixin.py:109} INFO - [2021-09-07 15:58:59,568] {dagbag.py:329} ERROR - Failed to import: /opt/airflow/dags/dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 326, in _load_modules_from_file
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag.py", line 21, in <module>
+    connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=DB_HOST, port=PORT)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5434?
+could not connect to server: Cannot assign requested address
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5434?
+[2021-09-07 15:58:59,569] {processor.py:625} WARNING - No viable dags retrieved from /opt/airflow/dags/dag.py
+[2021-09-07 15:58:59,580] {processor.py:170} INFO - Processing /opt/airflow/dags/dag.py took 0.021 seconds
+[2021-09-07 15:59:29,959] {processor.py:162} INFO - Started process (PID=79) to work on /opt/airflow/dags/dag.py
+[2021-09-07 15:59:29,960] {processor.py:613} INFO - Processing file /opt/airflow/dags/dag.py for tasks to queue
+[2021-09-07 15:59:29,960] {logging_mixin.py:109} INFO - [2021-09-07 15:59:29,960] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dag.py
+[2021-09-07 15:59:29,964] {logging_mixin.py:109} INFO - [2021-09-07 15:59:29,963] {dagbag.py:329} ERROR - Failed to import: /opt/airflow/dags/dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 326, in _load_modules_from_file
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag.py", line 21, in <module>
+    connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=DB_HOST, port=PORT)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5434?
+could not connect to server: Cannot assign requested address
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5434?
+[2021-09-07 15:59:29,964] {processor.py:625} WARNING - No viable dags retrieved from /opt/airflow/dags/dag.py
+[2021-09-07 15:59:29,972] {processor.py:170} INFO - Processing /opt/airflow/dags/dag.py took 0.015 seconds
+[2021-09-07 16:00:00,082] {processor.py:162} INFO - Started process (PID=127) to work on /opt/airflow/dags/dag.py
+[2021-09-07 16:00:00,082] {processor.py:613} INFO - Processing file /opt/airflow/dags/dag.py for tasks to queue
+[2021-09-07 16:00:00,083] {logging_mixin.py:109} INFO - [2021-09-07 16:00:00,083] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dag.py
+[2021-09-07 16:00:00,086] {logging_mixin.py:109} INFO - [2021-09-07 16:00:00,086] {dagbag.py:329} ERROR - Failed to import: /opt/airflow/dags/dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 326, in _load_modules_from_file
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag.py", line 21, in <module>
+    connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=DB_HOST, port=PORT)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5434?
+could not connect to server: Cannot assign requested address
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5434?
+[2021-09-07 16:00:00,086] {processor.py:625} WARNING - No viable dags retrieved from /opt/airflow/dags/dag.py
+[2021-09-07 16:00:00,102] {processor.py:170} INFO - Processing /opt/airflow/dags/dag.py took 0.022 seconds
+[2021-09-07 16:00:30,280] {processor.py:162} INFO - Started process (PID=183) to work on /opt/airflow/dags/dag.py
+[2021-09-07 16:00:30,280] {processor.py:613} INFO - Processing file /opt/airflow/dags/dag.py for tasks to queue
+[2021-09-07 16:00:30,280] {logging_mixin.py:109} INFO - [2021-09-07 16:00:30,280] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dag.py
+[2021-09-07 16:00:30,284] {logging_mixin.py:109} INFO - [2021-09-07 16:00:30,284] {dagbag.py:329} ERROR - Failed to import: /opt/airflow/dags/dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 326, in _load_modules_from_file
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag.py", line 21, in <module>
+    connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=DB_HOST, port=PORT)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5434?
+could not connect to server: Cannot assign requested address
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5434?
+[2021-09-07 16:00:30,284] {processor.py:625} WARNING - No viable dags retrieved from /opt/airflow/dags/dag.py
+[2021-09-07 16:00:30,294] {processor.py:170} INFO - Processing /opt/airflow/dags/dag.py took 0.016 seconds
+[2021-09-07 16:01:00,454] {processor.py:162} INFO - Started process (PID=239) to work on /opt/airflow/dags/dag.py
+[2021-09-07 16:01:00,455] {processor.py:613} INFO - Processing file /opt/airflow/dags/dag.py for tasks to queue
+[2021-09-07 16:01:00,455] {logging_mixin.py:109} INFO - [2021-09-07 16:01:00,455] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dag.py
+[2021-09-07 16:01:00,459] {logging_mixin.py:109} INFO - [2021-09-07 16:01:00,459] {dagbag.py:329} ERROR - Failed to import: /opt/airflow/dags/dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 326, in _load_modules_from_file
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag.py", line 21, in <module>
+    connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=DB_HOST, port=PORT)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5434?
+could not connect to server: Cannot assign requested address
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5434?
+[2021-09-07 16:01:00,460] {processor.py:625} WARNING - No viable dags retrieved from /opt/airflow/dags/dag.py
+[2021-09-07 16:01:00,468] {processor.py:170} INFO - Processing /opt/airflow/dags/dag.py took 0.016 seconds
+[2021-09-07 16:01:30,648] {processor.py:162} INFO - Started process (PID=295) to work on /opt/airflow/dags/dag.py
+[2021-09-07 16:01:30,648] {processor.py:613} INFO - Processing file /opt/airflow/dags/dag.py for tasks to queue
+[2021-09-07 16:01:30,649] {logging_mixin.py:109} INFO - [2021-09-07 16:01:30,649] {dagbag.py:496} INFO - Filling up the DagBag from /opt/airflow/dags/dag.py
+[2021-09-07 16:01:30,652] {logging_mixin.py:109} INFO - [2021-09-07 16:01:30,652] {dagbag.py:329} ERROR - Failed to import: /opt/airflow/dags/dag.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 326, in _load_modules_from_file
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag.py", line 21, in <module>
+    connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=DB_HOST, port=PORT)
+  File "/home/airflow/.local/lib/python3.8/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5434?
+could not connect to server: Cannot assign requested address
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5434?
+[2021-09-07 16:01:30,652] {processor.py:625} WARNING - No viable dags retrieved from /opt/airflow/dags/dag.py
+[2021-09-07 16:01:30,661] {processor.py:170} INFO - Processing /opt/airflow/dags/dag.py took 0.014 seconds

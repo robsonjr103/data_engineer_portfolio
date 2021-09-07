@@ -14,8 +14,8 @@ from data.create_tables import create_tables
 _DB_NAME = "Covid_Daily_Update" # Database Name
 _DB_USER = "airflow" # User name
 _DB_PASS = "airflow" # User password
-DB_HOST = "localhost" # Host of database
-PORT = "5434" # Port
+DB_HOST = "postgres" # Host of database
+PORT = "5432" # Port
 
 # Create connection and cursor with the database
 connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=DB_HOST, port=PORT)
