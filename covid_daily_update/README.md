@@ -1,7 +1,7 @@
 # Project: Covid Daily Update
-OBJECTIVE: Creates a database in SQLite with two tables, "covid_brazil", which contains daily covid data in Brazil, and the "covid_states" table that contains daily covid data for each Brazilian state.
+OBJECTIVE: Creates two tables in "Covid_Daily_Update" database, in Postgres and populate then with daily data of Covid-19 in Brazil and states. The table "covid_brazil" contains daily covid data in Brazil, and the "covid_states" table contains daily covid data for each Brazilian state.
 
- First, the database file ("database.db") is created, then several requests are made in the covid-api API [covid-api](http://covid-api.com/api/) , so that daily data about covid is entered in the tables, since the first time there was available data.
+ First, the two tables are created, then several requests are made in the covid-api API [covid-api](http://covid-api.com/api/), so that daily data about covid is entered in the tables, since the first time there was available data.
  
  # Here is a preview of each of the two tables within the database.
 
@@ -20,7 +20,7 @@ OBJECTIVE: Creates a database in SQLite with two tables, "covid_brazil", which c
 The "run.sh" script set the environment inside the container.
 
 ---
-The "run.py" script creates the Database and its two tables if they do not exist, so it makes several requests in the API to add daily Covid data to the two tables from the first day they were available until the day before the script was run.
+The "run.py" script creates the two tables if they do not exist, so it makes several requests in the API to add daily Covid data to the two tables from the first day they were available until the day before the script was run.
 
 ---
 In addition, within the "dag.py" file there is an Airflow DAG that adds daily Covid data from the previous day to the two database tables.
@@ -48,6 +48,7 @@ In addition, within the "dag.py" file there is an Airflow DAG that adds daily Co
 ---
 3. Inside the "covid_daily_update" folder run the file "run.sh":
     ###### WARNING: Run this file only once, even if you stop the container some time.
+
 - It update the "pip", installs the libraries within the file "requiriments.txt".
 - Finally unpause the "daily_update_covid_tables" DAG.
 
@@ -57,19 +58,18 @@ In addition, within the "dag.py" file there is an Airflow DAG that adds daily Co
 ---
 4. Run the command:
     
-- Runs the script that creates the database and its tables, if they do not stretch and populate then with daily data
+- Runs the script that creates the two tables if they do not stretch and populate then with all daily data avaiable in the API.
 
     ```sh
     sudo docker exec covid_daily_update_airflow-webserver_1 python3 /opt/airflow/project/run.py
     ```
 
 ---
-5. Now the data will be inserted into the Database tables and Airflow will run in the background, so daily at 13:01 data from the previous day will be added.
+5. Now the data will be inserted into the Database tables and Airflow will run in the background, so daily at UTC 13:01 data from the previous day will be added.
 - If you prefer, go to the following link "localhost:8080" to access the Airflow UI, the user and password are both "airflow".
 
 ---
-6. The database is in the "/opt/airflow/project/data/database/database.db" path.
-- You can use some framework that can connect to the Database file to explore it or anything you want.
+6. Postgres is running in port 5434, the user and password are both "airflow".
 ---
 
 ## Additional commands:
