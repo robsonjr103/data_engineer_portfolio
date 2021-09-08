@@ -33,9 +33,8 @@ def commit_and_close_connection(connection, cursor):
     
     
 with DAG(dag_id="daily_update_covid_tables",
-         start_date=datetime(2021, 9, 4),
+         start_date=datetime(2021, 9, 8),
          schedule_interval="1 13 * * *",
-         catchup=False
          ) as dag:
 
     # Task that performs the function that creates tables if they do not exist
