@@ -12,8 +12,8 @@ from data.create_tables import create_tables
 
 #! Database connection parameters
 _DB_NAME = "Covid_Daily_Update" # Database Name
-_DB_USER = "airflow" # User name
-_DB_PASS = "airflow" # User password
+_DB_USER = "covid_daily_update" # User name
+_DB_PASS = "covid_daily_update" # User password
 DB_HOST = "postgres" # Host of database
 PORT = "5432" # Port
 
