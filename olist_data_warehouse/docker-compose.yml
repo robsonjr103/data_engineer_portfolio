@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db_postgres13:
+    image: 'postgres:latest'
+    
+    ports:
+      - 5434:5432
+
+    restart: always
+
+    environment:
+      POSTGRES_USER: username # The PostgreSQL user 
+      POSTGRES_PASSWORD: password # The PostgreSQL password 
+      POSTGRES_DB: olist_database # The PostgreSQL default database (automatically created at first launch)
+
+    volumes:
+      - ./data:/home/data/
+      # - ./src/:/home/src/
+
+    #command: /bin/bash /home/project/src/bash/configure_work_space.sh # Execute the BASH file that's configure the workspace of the container
