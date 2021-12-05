@@ -11,8 +11,13 @@ python3 --version
 # Install pip
 apt-get install python3-pip -y
 
+# Install the necessary python libraries
 pip install psycopg2-binary
+pip install --upgrade sultan
 
+# Execute the main script that:
+# * Create the Transactional Database, it's tables, relations and populate it's with data from the Olist CSV files
+# * Create the Data Warehouse, the Fact table, dimentional tables, relations and copy data from the Transactional Database
 python3 /home/project/src/transactional_database/create_transactional_database.py
 
 # Install requeriments

@@ -1,7 +1,7 @@
-# This file contains the function "populate_tables" that populate the transacional database with data from the CSV files of the folder "data/olist_datasets"
+# This file contains the function "populate_tables" that populate the olist database with data from the CSV files of the folder "data/olist_datasets"
 
 
-def populate_tables(cursor, files=list):
+def populate_olist_tables(cursor, files=list):
     """
     Summary: It populaes the Olist Database tables with Olist CSV data.
 
@@ -13,29 +13,30 @@ def populate_tables(cursor, files=list):
       : files (Python List): List of CSV files with data
     """
 
-    # Loop that populate tables with it's respectives CSV files
+    # Loop that copy data from CSV files to tables
     for file in files:
       
-      # If the file is not "product_category_name_translation.csv", it will cut the file name and turn the name of the table that will be added the data
+      # If the file name is not "product_category_name_translation.csv", it will cut the file name and turn the name of the table that will be added the data
       if file != "product_category_name_translation.csv":
-          table = str(file[6:-12])
+          table = file[6:-12]
 
-      # Ir the file is "product_category_name_translation.csv", the table name is the file name without the extension ".csv"
+      # If the file name is "product_category_name_translation.csv", the table name is the file name without the extension ".csv"
       else:
           table = file[:-4]
 
       # Copy the data from the CSV file to the respective table
       cursor.execute("""
-                        COPY {table} FROM '/home/data/olist_datasets/{file}' USING DELIMITERS ',' CSV HEADER;
+                        
+                        COPY {table} FROM '/project/data/olist_datasets/{file}' USING DELIMITERS ',' CSV HEADER;
+
       """.format(table=table, file=file))
 
 
 
-"""
 if __name__ == "__main__":
-    from sultan.api import Sultan
 
     import psycopg2
+    import os
 
     #! Database connection parameters
     _DB_NAME = "olist_database" # Database Name
@@ -44,18 +45,14 @@ if __name__ == "__main__":
     _DB_HOST = "localhost" # Host of database
     PORT = "5434" # Port
 
-        # Create connection and cursor with the database
+    # Create connection and cursor with the database
     connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=_DB_HOST, port=PORT)
     cursor = connection.cursor()
 
-    Sultan = Sultan()
+    files = os.listdir("/home/diogovalentte/everthing/Projects/GitHub/data_enginner_portfolio/olist_data_warehouse/project/data/olist_datasets")
 
-    response = Sultan.sudo("ls /home/diogovalentte/everthing/Projects/GitHub/data_enginner_portfolio/olist_data_warehouse/data/olist_datasets").run()
-
-    files = response.stdout
-
-    populate_tables(cursor=cursor, files=files)
+    populate_olist_tables(cursor=cursor, files=files)
 
     connection.commit()
     cursor.close()
-    connection.close()"""
+    connection.close()
