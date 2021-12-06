@@ -1,17 +1,17 @@
 # Project: Covid Daily Update
-OBJECTIVE: Creates two tables in "Covid_Daily_Update" database, in Postgres and populate then with daily data of Covid-19 in Brazil and states. The table "covid_brazil" contains daily covid data in Brazil, and the "covid_states" table contains daily covid data for each Brazilian state.
+OBJETIVO: Criar duas tabelas no Banco de Dados "Covid_Daily_Update" no SGDB Postgres e então popular essas tabelas com dados diários do Covid-19 no Brazil e seus estados. A tabela "covid_brazil" contém dados diários do Covid no Brazil, enquanto a tabela "covid_states" contém dados diários do Covid para cada estado brasileiro.
 
- First, the two tables are created, then several requests are made in the covid-api API [covid-api](http://covid-api.com/api/), so that daily data about covid is entered in the tables, since the first time there was available data.
+Primeiro o Banco de dados e suas duas tabelas são criados, então várias requisições são feitas na API [covid-api](http://covid-api.com/api/) para adquirir os dados, então esses dados diários são inseridos nas tabelas.
  
- # Here is a preview of each of the two tables within the database.
+ # Abaixo uma demonstração das tabelas.
 
-#### "covid_brazil": Contains daily covid data in Brazil.
+#### "covid_brazil": Dados diários do Covid no Brasil.
 
 | date       | confirmed_accumulated                 | confirmated_difference                                 | deaths_accumulated                     | deaths_difference                                       | last_update       |
 |------------|---------------------------------------|--------------------------------------------------------|----------------------------------------|---------------------------------------------------------|-------------------|
 | Data date. | Cumulative number of confirmed cases. | Difference of confirmed cases from yesterday to today. | Cumulative number of confirmed deaths. | Difference of confirmed deaths from yesterday to today. | Last data update. |
 
-#### "covid_states": Contains daily Covid data from Brazilian states.
+#### "covid_states": Dados diários do Covid em cada estado brasileiro.
 
 | state  | date       | confirmed_accumulated                 | confirmated_difference                                 | deaths_accumulated                     | deaths_difference                                       | last_update       |
 |--------|------------|---------------------------------------|--------------------------------------------------------|----------------------------------------|---------------------------------------------------------|-------------------|
@@ -28,71 +28,68 @@ In addition, within the "dag.py" file there is an Airflow DAG that adds daily Co
 ---
 # How to use this project:
 
-##### Prerequisites: Have [Docker](https://www.docker.com) and [Docker Compose](https://docs.docker.com/compose/install/#install-compose) installed on your machine. The docker image is available [here](https://airflow.apache.org/docs/apache-airflow/stable/docker-compose.yaml)
+##### Pré requisitos: Ter o [Docker](https://www.docker.com) e [Docker Compose](https://docs.docker.com/compose/install/#install-compose) instalados. A imagem original docker está disponivel aqui [here](https://airflow.apache.org/docs/apache-airflow/stable/docker-compose.yaml)
 
 ---
-1. Run the following command in "covid_daily_update" folder:
+1º Execute o comando abaixo dentro da pasta "covid_daily_update". Esse comando cria váriaveis de ambiente úteis na execução dos serviços:
     ```sh
     echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
     ```
 
 ---
-2. Run the following command in "covid_daily_update" folder:
-- The container will run in background mode, Airflow services on port 8080, and Postgres on port 5434.
+2. Execute o comando abaixo dentro da pasta "covid_daily_update". Esse comando cria os containers (serviços) necessários para utilização do projeto:
+- Os serviços serão executados em segundo plano. O serviço do Airflow está disponivel na porta 8080, e o serviço do Postgres na porta 5434. (Os usuários e senhas dos serviços são "airflow")
 
     ```sh
     sudo docker-compose up -d
     ```
-- Wait a minute for the services to start completely, and then execute the other commands.
+- Espere um minuto até que os serviços tenham sidos iniciados totalmente para continuar.
 
 ---
-3. Inside the "covid_daily_update" folder run the file "run.sh":
-    ###### WARNING: Run this file only once, even if you stop the container some time.
+3. Dentro da pasta "covid_daily_update" execute o arquivo "run.sh" através do comando abaixo:
+    ###### WARNING: Execute esse comando apenas uma ves, mesmo que os serviçoes parem em algum momento.
 
-- It update the "pip", installs the libraries within the file "requiriments.txt".
-- Finally unpause the "daily_update_covid_tables" DAG.
+- Esse script instala o gerenciador de pacotes Python, "pip", além das bibliotecas Python necessárias no "requiriments.txt".
+- Por fim o script despausa a DAG "daily_update_covid_tables".
 
     ```sh
     bash run.sh
     ```
 ---
-4. Run the command:
+4. Execute o seguinte comando:
     
-- Runs the script that creates the two tables if they do not stretch and populate then with all daily data avaiable in the API.
+- Esse script cria as tabelas do banco de dados e insere os dados diários do Covid nelas.
 
     ```sh
     sudo docker exec covid_daily_update_airflow-webserver_1 python3 /opt/airflow/project/run.py
     ```
 
 ---
-5. Now the data will be inserted into the Database tables and Airflow will run in the background, so daily at UTC 13:01 data from the previous day will be added.
-- If you prefer, go to the following link "localhost:8080" to access the Airflow UI, the user and password are both "airflow".
-
----
-6. Postgres is running in port 5434, the user and password are both "airflow".
+5. Agora os dados serão inseridos nas tabelas e os serviços do Airflow e Postgres serão executados em segundo plano, então diariamente as 13:01 UTC, dados do Covid do dia anterior serão adicionados nas tabelas
+- Se prefirir, acesse no navegador o link "localhost:8080" para acessar a interface do Airflow, tanto o usuário quanto a senha são "airflow".
 ---
 
-## Additional commands:
+## Comandos adicionais:
 
-#### Show the active containers.
+#### Mostrar os serviços (containers) Docker ativos em segundo plano.
 ```sh
 sudo docker ps
 ```
 
 ---
-#### Stop the containers (Run in "covid_daily_update" folder).
+#### Parar os serviços do projeto (Execute dentro da pasta "covid_daily_update").
 ```sh
 sudo docker-compose down
 ``` 
 ---
-#### Run a command inside the container.
+#### Executar um comando dentro do serviço do airflow.
 ```sh
-sudo docker exec covid_daily_update_airflow-webserver_1 <command>
+sudo docker exec covid_daily_update_airflow-webserver_1 <comando>
 ```
 
 ---
-#### Show logs from a container
+#### Mostrar as logs de um serviço (container)
 ```sh
-sudo docker logs <container name>
+sudo docker logs <nome do serviço (ver no comando "sudo docker ps")>
 ```
 ---
