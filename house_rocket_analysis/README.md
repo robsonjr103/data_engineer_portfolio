@@ -1,32 +1,29 @@
 # House Rocket Analysis
-In this project, we will analyze the dataset to generate insights, answer three main questions, create and answer our own hypotheses, and create a Web App that can be seen in the browser.
+Nesse projeto será analisado um conjunto de dados com o objetivo de gerar "insights", responder o problema de negócio proposto pelo CEO ficticio da empresa ficticia "House Rocker", além de responder hipoteses próprias e por fim criar um Web App para que qualquer um possa ver as analises feitas.
 
-#### WARNING: It is recommended to see the main insights and final reports in the Web App before viewing the Notebooks
+#### WARNING: É recomendado ver primeiro os principais "insights" e reportes finais no Web App e por fim analisar os notbooks.
 
-### The dataset was taken from Kaggle, at [link](https://www.kaggle.com/harlfoxem/housesalesprediction), with the following description:
+### O conjunto de dados foi pego no site Kaggle, no link [link](https://www.kaggle.com/harlfoxem/housesalesprediction). O conjunto de dados possuí a seguinte descrição:
 
 "This dataset contains home sales prices for King County, which includes Seattle. It includes homes sold between May 2014 and May 2015.
 It's a great dataset for evaluating simple regression models. "
 
-## Business problem
+## Problema ficticio de negócio:
 
-The "CEO" of the imaginary company House Rocket works with the purchase and resale of real estate in Seattle, USA. He hired me to analyze a dataset with multiple homes available for purchase and then answer three main questions,
+O CEO da empresa imaginária "House Rocket" trabalha com a compra e revenda de propriedades no estado de Seattle, USA. Esse CEO me contratou para analisar um conjunto de dados com multiplas propriedades disponiveis para compra e responder quatro questões principais:
 
-* 1 - Which houses should the CEO of House Rocket buy and at what price?
+* 1 - Qual propriedades a House Rocket deveria comprar e por qual preço?
 
-* 2 - As the house is owned by the company, what would the sale price be?
+* 2 - Assim que as propriedades estiverem sob posse da House Rocker, por qual preço elas deveria ser vendidas?
 
-* 3 - When is the best time to sell them?
+* 3 - Qual o melhor momento para revendelas?
 
-* 4 - Should House Rocket do a renovation to increase the sale price? What would be the suggestions for changes? What is the price increase given for each retrofit option?
-
-In addition, I created and answered 3 hypotheses, in addition to creating a Web App that can be run and opened in the browser to have access to the main Insights and two maps of the houses.
-
-# Web Application
-### The Web App created by the Stramlit framework, which can be seen in the browser, contains the main Insights, tables with all houses available for purchase and houses recommended for purchase, in addition to the possible earnings from reselling the houses, whether the house is renovated or not.
+* 4 - A House Rocket deveria fazer reformas nessas propriedades para aumentar o preço de revenda? O que a House Rocker deveria reformar nessas propriedades para aumentar o preço de revenda?
 
 
-#### To use the Web App, just follow these steps:
+
+---
+## Para iniciar o Web App, siga as instruções:
 
 1. Edit the following snippet of the "app.py" file inside the APP folder. Inside it put the path to the project's root folder.
 
@@ -34,29 +31,31 @@ In addition, I created and answered 3 hypotheses, in addition to creating a Web 
 project_path = "Put/here/the/path/to/the/project's/root/folder/house_rocket_analysis"
 ```
 
-2. From the command line, run the following command:
+2. Através da linha de comando execute o comando abaxio:
 ```bash
 streamlit run APP/appy.py
 ```
 
-#### Now just go to the link provided in your browser.
+#### Agora basta abrir o link provido no seu navegador.
 ---
 ---
-# Notebook: 1.0-Data_Exploratory
+# Notebooks
 
-### In this section, we'll explore the House Rocket dataset. We will follow these steps:
+## Notebook: 1.0-Data_Exploratory
 
-1. Identify missing or duplicate values ​​and treat them if necessary
-2. Calculate descriptive statistics
-3. Identify if there are outliers in the dataset and resolve them if necessary
-4. Explore the correlation of house prices with other variables
+### Nessa seção o conjunto de dados foi explorado com os seguintes objetivos:
+
+1. Identificar valores duplicados ou faltando no conjunto de dados, e se preciso trata-los.
+2. Calcular estatísticas descritivas com relação aos dados.
+3. Identificar "outliers" no conjunto e trata-los.
+4. Explorar a correlação entre o preço das propriedades e outras váriaveis, como quantidade de andares, banheiros, etc.
+
+## Notebook: 2.0-Main_Questions
+
+### Nessa seção as perguntas do CEO foram respondidas.
+* Em adicional foi gerada a tabela final com a recomendação de quais propriedades comprar, por qual preço revende-las se elas forem renovadas ou não. ALém do possível lucro.
+
 #
-# Notebook: 2.0-Main_Questions
+## Notebook: 3.0-Hypotheses
 
-### In this section, we'll answer the three main questions.
-* In addition to generating the final table with the recommendation of the house to buy, the ideal resale price whether the house is renovated or not, in addition to the possible resale profit.
-
-#
-# Notebook: 3.0-Hypotheses
-
-### In this section, we will create and answer our own hypotheses based on our knowledge of the dataset.
+### Nessa seção foram criadas e respondidas três hipoteses com relação aos dados.
