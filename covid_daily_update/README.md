@@ -9,13 +9,13 @@ Primeiro o Banco de dados e suas duas tabelas são criados, então várias requi
 
 | date       | confirmed_accumulated                 | confirmated_difference                                 | deaths_accumulated                     | deaths_difference                                       | last_update       |
 |------------|---------------------------------------|--------------------------------------------------------|----------------------------------------|---------------------------------------------------------|-------------------|
-| Data date. | Cumulative number of confirmed cases. | Difference of confirmed cases from yesterday to today. | Cumulative number of confirmed deaths. | Difference of confirmed deaths from yesterday to today. | Last data update. |
+| Data | Número acumulativo de casos confimados | Diferença de casos confimados do dia anterior para atual | Número acumulativo de mortes confimadas | Diferença de mortes confimadas do dia anterior para o atual | Data da última atualização |
 
 #### "covid_states": Dados diários do Covid em cada estado brasileiro.
 
 | state  | date       | confirmed_accumulated                 | confirmated_difference                                 | deaths_accumulated                     | deaths_difference                                       | last_update       |
 |--------|------------|---------------------------------------|--------------------------------------------------------|----------------------------------------|---------------------------------------------------------|-------------------|
-| State. | Data date. | Cumulative number of confirmed cases. | Difference of confirmed cases from yesterday to today. | Cumulative number of confirmed deaths. | Difference of confirmed deaths from yesterday to today. | Last data update. |
+| Estado | Data | Número acumulativo de casos confimados | Diferença de casos confimados do dia anterior para atual | Número acumulativo de mortes confimadas | Diferença de mortes confimadas do dia anterior para o atual | Data da última atualização |
 ---
 ### Arquivos importantes>
 O arquivo "run.sh" configura o ambiente dentro dos containers.
