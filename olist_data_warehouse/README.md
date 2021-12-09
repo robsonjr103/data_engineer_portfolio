@@ -49,7 +49,7 @@
    docker exec olist_data_warehouse_db_postgres13_1 /bin/bash /project/run.sh
    ```
    
-- Atualizará os repositorios do container, instalará o Python 3.8, o "pip" e as bibliotecas Python necessárias dentro do container.
+- Atualizará os repositorios do container, instalará o Python, o "pip" e as bibliotecas Python necessárias dentro do container.
 - Além disso executará o arquivo "run.py", que criará e adicionará dados dentro das tabelas do Banco de Dados "olist_database" e do Data Warehouse "olist_data_warehouse"
   
 
