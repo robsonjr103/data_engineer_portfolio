@@ -17,5 +17,3 @@ services:
     volumes:
       - ./project:/project/
       - ./requiriments.txt/:/project/requiriments.txt
-
-    command: /bin/bash /project/run.sh # Execute the BASH file that's configure the workspace of the container
