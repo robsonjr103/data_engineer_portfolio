@@ -40,11 +40,18 @@
     ```sh
     sudo docker-compose up -d
     ```
-- Executará o arquivo "run.sh" que atualizará os repositorios do container, instalará o Python 3.8, o "pip" e as bibliotecas Python necessárias dentro do container.
-  - Além disso executará o arquivo "run.py", que criará e adicionará dados dentro das tabelas do Banco de Dados "olist_database" e do Data Warehouse "olist_data_warehouse"
-  
 - O serviço será executado em segundo plano. 
 - O serviço do Postgres pode ser acessado atráves da porta 5434, com o usuário "username", senha "password" e banco de dados "olist_database"
+
+---
+2º Execute o comando abaixo dentro da pasta "olist_data_warehouse". Esse comando irá configurar o ambiente dentro do container (serviço) do Postgres.
+   ```sh
+   docker exec olist_data_warehouse_db_postgres13_1 /bin/bash /project/run.sh
+   ```
+   
+- Atualizará os repositorios do container, instalará o Python 3.8, o "pip" e as bibliotecas Python necessárias dentro do container.
+- Além disso executará o arquivo "run.py", que criará e adicionará dados dentro das tabelas do Banco de Dados "olist_database" e do Data Warehouse "olist_data_warehouse"
+  
 
 ---
 
