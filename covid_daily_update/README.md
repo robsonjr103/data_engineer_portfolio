@@ -9,29 +9,31 @@ Primeiro o Banco de dados e suas duas tabelas são criados, então várias requi
 
 | date       | confirmed_accumulated                 | confirmated_difference                                 | deaths_accumulated                     | deaths_difference                                       | last_update       |
 |------------|---------------------------------------|--------------------------------------------------------|----------------------------------------|---------------------------------------------------------|-------------------|
-| Data date. | Cumulative number of confirmed cases. | Difference of confirmed cases from yesterday to today. | Cumulative number of confirmed deaths. | Difference of confirmed deaths from yesterday to today. | Last data update. |
+| Data | Número acumulativo de casos confimados | Diferença de casos confimados do dia anterior para atual | Número acumulativo de mortes confimadas | Diferença de mortes confimadas do dia anterior para o atual | Data da última atualização |
 
 #### "covid_states": Dados diários do Covid em cada estado brasileiro.
 
 | state  | date       | confirmed_accumulated                 | confirmated_difference                                 | deaths_accumulated                     | deaths_difference                                       | last_update       |
 |--------|------------|---------------------------------------|--------------------------------------------------------|----------------------------------------|---------------------------------------------------------|-------------------|
-| State. | Data date. | Cumulative number of confirmed cases. | Difference of confirmed cases from yesterday to today. | Cumulative number of confirmed deaths. | Difference of confirmed deaths from yesterday to today. | Last data update. |
+| Estado | Data | Número acumulativo de casos confimados | Diferença de casos confimados do dia anterior para atual | Número acumulativo de mortes confimadas | Diferença de mortes confimadas do dia anterior para o atual | Data da última atualização |
 ---
-The "run.sh" script set the environment inside the container.
+### Arquivos importantes>
+O arquivo "run.sh" configura o ambiente dentro dos containers.
 
 ---
-The "run.py" script creates the two tables if they do not exist, so it makes several requests in the API to add daily Covid data to the two tables from the first day they were available until the day before the script was run.
+O arquivo "run.py" cria as tabelas do Banco de dados, após isso faz várias requisições da API e adiciona esses dados diários do Covid até o dia anterior a execução do arquivo dentro das tabelas.
 
 ---
-In addition, within the "dag.py" file there is an Airflow DAG that adds daily Covid data from the previous day to the two database tables.
+O arquivo "dag.py" contém as configurações da DAG do Airflow, assim diariamente serão feitas requisições na API para adicionar dados do Covid do dia anterior.
 
 ---
-# How to use this project:
+# Como utilizar esse projeto:
 
 ##### Pré requisitos: Ter o [Docker](https://www.docker.com) e [Docker Compose](https://docs.docker.com/compose/install/#install-compose) instalados. A imagem original docker está disponivel aqui [here](https://airflow.apache.org/docs/apache-airflow/stable/docker-compose.yaml)
 
 ---
 1º Execute o comando abaixo dentro da pasta "covid_daily_update". Esse comando cria váriaveis de ambiente úteis na execução dos serviços:
+
     ```sh
     echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
     ```
