@@ -17,7 +17,7 @@ if __name__ == "__main__":
     _DB_USER = "username" # User name
     _DB_PASS = "password" # User password   
     _DB_HOST = "localhost" # Cluster Host
-    PORT = "5434" # Cluster port
+    PORT = "5432" # Cluster port
 
     #! Connect with olist database and create cursor
     # Conection and cursor with the Olist Database
@@ -26,7 +26,7 @@ if __name__ == "__main__":
 
 
     #! TODO: Create the Olist Database tables and copy data from the CSV files to it
-    files = os.listdir("ls /project/data/olist_datasets/") # Obtain the list os CSV files
+    files = os.listdir("/project/data/olist_datasets/") # Obtain the list os CSV files
 
     create_olist_database_tables(cursor=_cursor) # Create Olist Database Tables
     populate_olist_tables(cursor=_cursor, files=files) # Copy data from CSV files to tables

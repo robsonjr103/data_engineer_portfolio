@@ -16,5 +16,4 @@ services:
 
     volumes:
       - ./project:/project/
-
-    #command: /bin/bash /project/src/bash/configure_work_space.sh # Execute the BASH file that's configure the workspace of the container
+      - ./requiriments.txt/:/project/requiriments.txt
