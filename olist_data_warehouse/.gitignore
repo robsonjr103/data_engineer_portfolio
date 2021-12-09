@@ -4,3 +4,6 @@ requisições.txt
 
 # Venv
 .venv
+
+# Tests
+test.py
