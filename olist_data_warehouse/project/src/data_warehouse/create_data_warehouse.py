@@ -7,7 +7,7 @@ def create_data_warehouse_schema(cursor):
     Args:
       : cursor (DataBase cursor): Cursor of the connection with the database
     """
-    
+
     _DW_DB_NAME = "olist_data_warehouse" # Data Warehouse Database Name
 
     cursor.execute("""CREATE SCHEMA IF NOT EXISTS {db_name}""".format(db_name=_DW_DB_NAME)) # Execute the SQL command that create the DW Schema
@@ -47,7 +47,6 @@ def create_data_warehouse_tables(cursor):
                             geolocation_state VARCHAR(2)
     )""")
 
-# Talvez tem que tirar a constaint de FK do order_id abaixo
     cursor.execute(""" CREATE TABLE IF NOT EXISTS olist_data_warehouse.Dim_order_items (
                             order_id VARCHAR(32),
                             product_id VARCHAR(32) NOT NULL,
@@ -71,27 +70,3 @@ def create_data_warehouse_tables(cursor):
                             order_review_score NUMERIC(2)
     )""")
 
-
-
-
-if __name__ == "__main__":
-    import psycopg2
-
-    #! Database connection parameters
-    _DB_NAME = "olist_database" # Database Name
-    _DB_USER = "username" # User name
-    _DB_PASS = "password" # User password   
-    _DB_HOST = "localhost" # Host of database
-    PORT = "5434" # Port
-
-    # Create connection and cursor with the database
-    connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=_DB_HOST, port=PORT)
-    cursor = connection.cursor()
-
-
-    create_data_warehouse_schema(cursor=cursor)
-    create_data_warehouse_tables(cursor=cursor)
-
-    connection.commit()
-    cursor.close()
-    connection.close()

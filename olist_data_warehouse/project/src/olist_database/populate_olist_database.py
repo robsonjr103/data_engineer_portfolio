@@ -31,28 +31,3 @@ def populate_olist_tables(cursor, files=list):
 
       """.format(table=table, file=file))
 
-
-
-if __name__ == "__main__":
-
-    import psycopg2
-    import os
-
-    #! Database connection parameters
-    _DB_NAME = "olist_database" # Database Name
-    _DB_USER = "username" # User name
-    _DB_PASS = "password" # User password   
-    _DB_HOST = "localhost" # Host of database
-    PORT = "5434" # Port
-
-    # Create connection and cursor with the database
-    connection = psycopg2.connect(dbname=_DB_NAME, user=_DB_USER, password=_DB_PASS, host=_DB_HOST, port=PORT)
-    cursor = connection.cursor()
-
-    files = os.listdir("/home/diogovalentte/everthing/Projects/GitHub/data_enginner_portfolio/olist_data_warehouse/project/data/olist_datasets")
-
-    populate_olist_tables(cursor=cursor, files=files)
-
-    connection.commit()
-    cursor.close()
-    connection.close()
