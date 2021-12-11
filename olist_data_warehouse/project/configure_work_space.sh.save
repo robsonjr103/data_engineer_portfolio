@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Update repositories
+apt-get update
+
+# Install python 3.8.10
+apt-get install python3 -y
+
+python3 --version
+
+# Install pip
+apt-get install python3-pip -y
+
+# Install the necessary python libraries
+pip -r /
+
+# Execute the main script that:
+# * Create the Transactional Database, it's tables, relations and populate it's with data from the Olist CSV files
+# * Create the Data Warehouse, the Fact table, dimentional tables, relations and copy data from the Transactional Database
+python3 /home/project/src/transactional_database/create_transactional_database.py
+
+# Install requeriments
+#pip install -r /home/project/requiriments.txt
+

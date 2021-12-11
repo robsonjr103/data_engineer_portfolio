@@ -1,0 +1,25 @@
+1º Caso: ETL, Governança e Desenvolvimento de API Este teste não é apenas um único teste, mas uma série deles, a fim de avaliar diferentes habilidades que são valiosas para nossa equipe. Público-alvo: todos que procuram uma vaga na tabela do iFood (Data Engineering).
+
+No iFood, os Engenheiros de Dados são encorajados a procurar qualquer ferramenta que possa ajudar a resolver qualquer desafio. Portanto, use qualquer idioma, armazenamento e ferramentas com as qual se sinta confortável. Além disso, esbore brevemente suas decisões. Então, sem mais delongas, vamos começar! 
+---
+
+Sandbox: edifício ETL Você já ouviu falar de... dados orientados? Bem, como acontece, nossos Analistas de Dados e Cientistas de Dados precisam de dados dos serviços de Ordem, Cliente e Restaurante para criar algo único que possa impactar a forma como executamos as coisas por aqui... Implemente um pipeline ETL para processar arquivos distintos e armazená-lo de forma estruturada.
+
+Requisitos: Os dados do pedido vêm da nossa arquitetura de serviço e são formatados em arquivos JSON. Eles estão armazenados nesta url: s3://ifood-data-architect-test-source/order.json.gz Para este teste, as equipes de serviço nos ofereceram um despejo de bancos de dados de restaurantes e clientes como arquivos CSV. Restaurante: s3://ifood-data-architect-test-source/restaurant.csv.gz Consumidor: s3://ifood-data-architect-test-source/consumer.csv.gz As análises são feitas em SQL. Assim, esses dados devem ser acessados de forma SQL. Os dados precisam ser consistentes, não podemos perder nada. Este ETL precisa ser escalável. Bônus: Emule uma fonte de streaming com base nesses arquivos Sinta-se livre para usar qualquer solução para armazenar esses dados.
+
+Entrega: Você é engenheiro de dados. Sinta-se livre para usar qualquer linguagem e tecnologia para alcançar seu objetivo. Idiomas, frameworks, plataformas não são uma restrição, mas sua solução deve estar dentro de uma imagem docker, script ou notebook pronto para ser executado. A execução deste contêiner/script ou notebook deve começar a ler os arquivos especificados e armazená-los em um formato estruturado. Governança e catálogo de dados Privacidade, governança de dados e catálogo de dados são habilidades necessárias na equipe de Engenharia de Dados. Precisamos armazenar todos os metadados para que todos os conjuntos de dados possam ser lidos em ferramentas distintas. Como você armazenaria todos os metadados para construir um catálogo e proteger seus dados? Sua solução deve levar em conta o acesso a dados e a proteção de dados privados.
+
+Entrega :Elaborou brevemente sobre sua solução, frameworks, algoritmos. Se possível, implemente a solução em sua tarefa anterior. 
+
+Sandbox, desenvolvimento de API: Todos são viciados em Data, e seu papel aqui é fornecer acesso não só para analistas e cientistas, mas também para serviços implantados em nossa infraestrutura. 
+Requisitos: Há uma página chique para restaurantes que precisam buscar alguns dados. Precisamos que você crie uma API que sirva pontos finais para retornar o seguinte: Contagem de pedidos por dia para cada cidade e estado em nosso banco de dados Top 10 restaurantes por cliente Use os dados da tarefa anterior para completar este. A API deve responder a um JSON com as informações desejáveis A consulta precisa ter um bom desempenho, ser mantida e retornar dados precisos. As empresas insistem em dobrar seu tamanho a cada mês. Esta solução precisa ser escalável! Você sabe o que fazer: qualquer idioma, qualquer estrutura, qualquer plataforma. Sinta-se livre para usar qualquer coisa para ajudá-lo a terminar esta tarefa.
+
+Entrega Forneça uma imagem docker com um serviço backend. A execução deste contêiner deve iniciar a infraestrutura necessária para fornecer os pontos finais Referências Comunidade Databricks: https://community.cloud.databricks.com docker de todos os spark-notebook: https://hub.docker.com/r/jupyter/all-spark-notebook/
+
+---------
+OBJETIVO: Criar um pipeline ETL para processar arquivos distintos e armazená-los de forma estruturada (RDBMS) SEM PERDER NENHUM DADO. A solução deve estar em uma imagem docker, script ou notebook pronto para ser executado.
+
+Dados: 
+	- Pedidos (JSON): s3://ifood-data-architect-test-source/order.json.gz
+	- Restaurantes (CSV): s3://ifood-data-architect-test-source/restaurant.csv.gz
+	- Consimudores (CSV): s3://ifood-data-architect-test-source/consumer.csv.gz
