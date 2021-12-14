@@ -1,0 +1,15 @@
+# iffod test stuff
+instructions
+
+# tests
+tests
+test.py
+
+# virtual enviromment
+.venv
+
+# Python stuff
+__pycache__
+
+# Large data
+data
