@@ -1,8 +1,7 @@
-### OBJETIVO: Copiar os dados dos arquivos .csv dentro da pasta "olist_datasets" para dentro do Banco de Dados "olist_database". Em seguida criar o schema "olist_data_warehouse" do Data Warehouse dentro do Banco de Dados "olist_database" e por fim popula-lo com dados do Banco de Dados "olist_database".
-
+### OBJETIVO: Criar um Banco de dados populado com dados de vários arquivos ".csv" e copiar os dados significantes para um Data Warehouse.
 ---
 
-### Os arquivos .csv foram baixados [aqui](https://www.kaggle.com/olistbr/brazilian-ecommerce). São dados contendo informações sobre pedidos, compradores, vendedores, pagamentos e produtos referentes aos serviços da empresa Olist. A imagem abaixo representa as relações entre os dados dos arquuivos .csv e do Banco de Dados "olist_database".
+### Os arquivos ".csv" foram baixados [aqui](https://www.kaggle.com/olistbr/brazilian-ecommerce). São dados contendo informações sobre pedidos, compradores, vendedores, pagamentos e produtos referentes aos serviços da empresa Olist. A imagem abaixo representa as relações entre os dados dos arquuivos .csv e do Banco de Dados "olist_database".
 
 ![imageDB](https://i.imgur.com/HRhd2Y0.png)
 
