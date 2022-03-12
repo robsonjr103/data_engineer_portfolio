@@ -1,4 +1,4 @@
-### OBJETIVO: Criar um Banco de dados populado com dados de vários arquivos ".csv" e copiar os dados significantes para um Data Warehouse.
+### OBJETIVO: Criar um Banco de dados populado com dados de vários arquivos ".csv". Posteriormente copiar os dados significantes do Banco de dados para um Banco de dados com estrutura de Data Warehouse.
 ---
 
 ### Os arquivos ".csv" foram baixados [aqui](https://www.kaggle.com/olistbr/brazilian-ecommerce). São dados contendo informações sobre pedidos, compradores, vendedores, pagamentos e produtos referentes aos serviços da empresa Olist. A imagem abaixo representa as relações entre os dados dos arquuivos .csv e do Banco de Dados "olist_database".
