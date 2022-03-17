@@ -1,0 +1,15 @@
+version: '3'
+
+service:
+  
+  python3:
+
+    image: 'python:3'
+
+    volumes:
+      - .:/folder/
+
+    working_dir: "/folder/"
+
+    # Run the "set_environment.sh" file that set the environment of the container
+    command: /bin/bash /folder/set_environment.sh
